@@ -3,17 +3,25 @@ title: Application Composer
 description: Overview of Oracle Fusion Application Composer and its core modules
 ---
 
-<br></br>
+import { Callout } from 'nextra/components'
+
+# Application Composer
 
 Application Composer is a configuration tool in **Oracle Fusion Sales & Service Cloud** used to **extend and customize CRM applications** in a controlled and upgrade-safe way.
 
 It allows administrators and developers to configure business behavior **without writing heavy backend code**.
 
+<Callout type="info">
+All changes are stored as **metadata**, not source code, ensuring upgrade-safe customizations.
+</Callout>
+
 ---
 
 ## What is Application Composer?
 
-Application Composer is used to:
+Application Composer is the centralized customization hub for Oracle Fusion applications.
+
+### Core Capabilities
 
 - Configure **standard business objects**
 - Create **custom objects**
@@ -22,43 +30,161 @@ Application Composer is used to:
 - Control **security and roles**
 - Configure **integrations**
 
-All changes are stored as **metadata**, not source code.
-
 ---
 
 ## Main Modules in Application Composer
 
-Application Composer is divided into multiple functional areas:
+Application Composer is divided into functional areas, each serving a specific customization purpose.
 
-- **Objects** – Define and manage business entities
-- **Relationships** – Connect objects together
-- **Object Workflows** – Automate business logic
-- **Global Functions** – Reusable Groovy logic
-- **Security** – Role and privilege control
-- **Web Services** – Integration endpoints
-- **Smart Actions & Runtime Messages** – UI and runtime behavior
+### Objects
 
-Each module focuses on a specific aspect of application configuration.
+Define and manage business entities that store your data.
+
+| Feature | Description | Example |
+|---------|-------------|---------|
+| Standard Objects | Pre-built Oracle objects | Accounts, Contacts, Opportunities |
+| Custom Objects | User-created entities | Customer Feedback, Project Tracker |
+| Fields | Data attributes | Email, Phone Number, Status |
+| Layouts | UI page configuration | Form layouts, field visibility |
+
+### Relationships
+
+Connect objects together to model business relationships.
+
+| Relationship Type | Use Case |
+|-------------------|----------|
+| One-to-Many | One Account → Many Contacts |
+| Many-to-One | Many Opportunities → One Account |
+| Lookup | Link related records |
+
+### Object Workflows
+
+Automate business logic without custom code.
+
+- Field-level validations
+- Auto-population of fields
+- Conditional logic
+- Triggers on create/update/delete
+
+<Callout type="info">
+[Object Workflows Documentation →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/object-workflows.html)
+</Callout>
+
+### Global Functions
+
+Reusable Groovy logic that can be called from anywhere in the application.
+
+```groovy
+// Example: Global function to calculate discount
+def calculateDiscount(amount, percentage) {
+    return amount * (percentage / 100)
+}
+```
+
+Benefits:
+- Write once, use everywhere
+- Promotes code reusability
+- Easier maintenance
+
+### Security
+
+Control data access through role and privilege management.
+
+| Security Layer | Controls |
+|----------------|----------|
+| Object Security | Who can access which objects |
+| Field Security | Field-level read/write permissions |
+| Role-Based Access | User role assignments |
+| Record-Level Security | Which records users can see |
+
+### Web Services
+
+Integration endpoints for external systems.
+
+- Expose custom objects via REST/SOAP APIs
+- Define web service operations
+- Configure authentication
+- Map data fields
+
+<Callout type="info">
+[Web Services Configuration →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/web-services.html)
+</Callout>
+
+### Smart Actions & Runtime Messages
+
+UI and runtime behavior customizations.
+
+- Custom buttons and actions
+- Runtime messages and alerts
+- Dynamic form behavior
+- User experience enhancements
 
 ---
 
 ## Who Uses Application Composer?
 
-- **Administrators** – Configuration and security
-- **Functional Consultants** – Business rules and workflows
-- **Technical Developers** – Groovy scripts and integrations
+Different roles leverage Application Composer for various purposes:
+
+### Administrators
+
+**Focus**: Configuration and security
+
+- User role management
+- Security setup
+- Object access control
+- System maintenance
+
+### Functional Consultants
+
+**Focus**: Business rules and workflows
+
+- Business process configuration
+- Workflow design
+- Field validations
+- UI customization
+
+### Technical Developers
+
+**Focus**: Groovy scripts and integrations
+
+- Complex business logic
+- Integration development
+- Global functions
+- Advanced customizations
 
 ---
 
 ## What Application Composer Is NOT Used For
 
-Application Composer is not used to:
+<Callout type="warning">
+Application Composer has intentional boundaries to maintain system stability and upgrade safety.
+</Callout>
 
-- Build full applications
-- Modify Oracle-delivered database tables
-- Write unrestricted backend code
+Application Composer is **not** used to:
 
-It is designed for **safe, controlled customization**.
+| Not Supported | Alternative Approach |
+|---------------|---------------------|
+| Build full standalone applications | Use Oracle APEX or external platforms |
+| Modify Oracle-delivered database tables | Use custom objects instead |
+| Write unrestricted backend code | Use controlled Groovy scripting |
+| Direct database access | Use REST/SOAP APIs |
+| Complex batch processing | Use Oracle Integration Cloud |
+
+---
+
+## Getting Started
+
+To access Application Composer:
+
+1. Navigate to **Setup and Maintenance → Application Composer**
+2. Select the appropriate module based on your customization needs
+3. Configure using the visual interface or add Groovy scripts if needed
+4. Test thoroughly in a sandbox environment
+5. Export configurations and deploy to production
+
+<Callout>
+**Best Practice**: Always document your customizations and maintain a change log.
+</Callout>
 
 ---
 
@@ -70,3 +196,13 @@ Application Composer is the central customization tool in Oracle Fusion that all
 - Control business behavior
 - Maintain upgrade safety
 - Avoid custom code complexity
+
+<Callout type="info">
+[Application Composer Documentation →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/application-composer-overview.html)
+</Callout>
+
+### Additional Resources
+
+- [Groovy Scripting Guide](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/groovy-scripting.html)
+- [Object Configuration Best Practices](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/objects.html)
+- [Security Configuration](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/security.html)

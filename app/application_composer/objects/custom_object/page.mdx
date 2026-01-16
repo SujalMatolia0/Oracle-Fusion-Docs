@@ -3,7 +3,9 @@ title: Custom Objects Overview
 description: Overview of Custom Objects in Oracle Fusion Application Composer
 ---
 
-<br></br>
+import { Callout } from 'nextra/components'
+
+# Custom Objects Overview
 
 The **Custom Objects** module in Application Composer allows users to **create and manage custom business entities** when standard Oracle objects do not meet business requirements.
 
@@ -21,132 +23,270 @@ You can think of a custom object as:
 
 Custom objects are created and managed **entirely through the UI**, without direct database access.
 
+<Callout>
+Custom objects provide the flexibility to extend Oracle Fusion while maintaining upgrade safety and platform best practices.
+</Callout>
+
 ---
 
 ## When to Use Custom Objects
 
-Custom objects are used when:
+Custom objects are appropriate when:
 
-- Required data does not fit into standard objects
-- Business processes are unique
-- Additional tracking or reporting is needed
-- Extensions must remain upgrade-safe
+| Scenario | Description |
+|----------|-------------|
+| **Unique Data Requirements** | Required data does not fit into standard objects |
+| **Custom Business Processes** | Business processes are organization-specific |
+| **Extended Tracking** | Additional tracking or reporting is needed beyond standard objects |
+| **Upgrade Safety** | Extensions must remain compatible with Oracle updates |
+
+**Common Use Cases**:
+- Customer feedback tracking
+- Internal approval workflows
+- Asset management
+- Custom product catalogs
+- Industry-specific data models
 
 ---
 
 ## Core Components of a Custom Object
 
-Each custom object can include the following components.
-
----
+Each custom object consists of multiple configurable components.
 
 ### Fields
 
-- Fields are attributes of a custom object
-- Similar to columns in a database table
-- Can be standard or custom
-- Used to store business data
+Fields are attributes that define what data the custom object can store.
 
----
+| Aspect | Description |
+|--------|-------------|
+| **Definition** | Attributes of a custom object |
+| **Comparison** | Similar to columns in a database table |
+| **Types** | Text, Number, Date, Picklist, Checkbox, Formula, etc. |
+| **Purpose** | Store business data values |
+
+**Field Configuration Options**:
+- Data type and length
+- Required vs optional
+- Default values
+- Display labels
+- Help text
 
 ### Pages
 
-- Pages control how users interact with object data
-- Define create, edit, and view layouts
-- UI behavior is managed through Application Composer and Page Composer
+Pages control how users interact with custom object data.
 
----
+| Page Type | Purpose |
+|-----------|---------|
+| **Create Page** | Form for creating new records |
+| **Edit Page** | Modify existing records |
+| **Detail Page** | View record information |
+| **Search Page** | Find and list records |
+
+**UI Management**:
+- Layout configured through Application Composer
+- Advanced customization available in Page Composer
+- Responsive design for different devices
 
 ### Links and Actions
 
-- **Links** are used for navigation between pages or objects
-- **Actions** perform operations on records
-- Actions can trigger business logic
+Navigation and operations for custom object records.
 
----
+**Links**:
+- Navigation between pages
+- Cross-object navigation
+- Related record access
+
+**Actions**:
+- Perform operations on records (create, update, delete)
+- Trigger business logic
+- Execute custom workflows
+- Can be button-based or menu-based
 
 ### Security
 
-- Security controls access to custom object data
-- Based on roles and privileges
-- Determines who can view, create, update, or delete records
+Control access to custom object data based on user roles and privileges.
+
+| Security Layer | Controls |
+|----------------|----------|
+| **Object Security** | Who can access the custom object |
+| **Field Security** | Read/write permissions on specific fields |
+| **Record Security** | Which records users can see and modify |
+| **Action Security** | Who can perform specific actions |
+
+<Callout type="warning">
+Always implement appropriate security controls to protect sensitive business data in custom objects.
+</Callout>
 
 ---
 
 ## Relationships in Custom Objects
 
-Custom objects can be connected to other objects using relationships.
+Custom objects can be connected to other objects (standard or custom) using relationships.
 
-- Parent–child relationships are supported
-- Used to link related business data
-- Important for navigation, reporting, and data integrity
+### Relationship Types
+
+| Type | Description | Example |
+|------|-------------|---------|
+| **One-to-Many** | Parent custom object with multiple child records | Project → Project Tasks |
+| **Many-to-One** | Multiple custom records relate to one standard object | Custom Feedback → Account |
+| **Lookup** | Reference to another object | Custom Asset → Contact (owner) |
+
+### Benefits of Relationships
+
+- Link related business data across objects
+- Enable navigation between related records
+- Support comprehensive reporting
+- Maintain data integrity and consistency
+- Create hierarchical data structures
+
+**Example Structure**:
+```
+Custom Project (Parent)
+├── Custom Task 1 (Child)
+├── Custom Task 2 (Child)
+└── Custom Task 3 (Child)
+```
 
 ---
 
 ## Server-Side Business Logic
 
-Custom objects support server-side logic using Groovy scripts.
-
----
+Custom objects support server-side logic using Groovy scripts to enforce business rules and automate processes.
 
 ### Validation Rules
 
-- Applied at field or object level
-- Validate data before saving
-- Prevent incorrect or incomplete data entry
+Ensure data quality and consistency before records are saved.
 
----
+| Aspect | Details |
+|--------|---------|
+| **Scope** | Field level or object level |
+| **Execution** | Before record save |
+| **Purpose** | Prevent incorrect or incomplete data |
+| **Error Handling** | Display validation messages to users |
+
+**Example Validation Scenarios**:
+- Ensure date ranges are valid (start date before end date)
+- Check that numeric values are within acceptable ranges
+- Verify required field combinations
+- Validate email or phone number formats
 
 ### Triggers
 
-- Executed during create, update, or delete events
-- Used for automation and conditional logic
-- Can react to field value changes
+Execute logic automatically during record lifecycle events.
 
----
+| Trigger Type | Execution Timing | Common Use Cases |
+|--------------|------------------|------------------|
+| **Before Create** | Before new record is saved | Set default values, validate data |
+| **After Create** | After new record is created | Create related records, send notifications |
+| **Before Update** | Before changes are saved | Validate changes, check permissions |
+| **After Update** | After changes are saved | Update related data, log changes |
+| **Before Delete** | Before record deletion | Check dependencies, validate deletion |
+| **After Delete** | After record is deleted | Clean up related data, archive information |
 
 ### Object Functions
 
-- Custom Groovy methods defined on objects
-- Used for reusable business logic
-- Can be called from triggers or actions
+Reusable Groovy methods defined on custom objects.
+
+```groovy
+// Example: Calculate priority score based on multiple factors
+def calculatePriorityScore(urgency, impact) {
+    def urgencyWeight = 0.6
+    def impactWeight = 0.4
+    return (urgency * urgencyWeight) + (impact * impactWeight)
+}
+```
+
+**Characteristics**:
+- Promote code reusability
+- Can be called from triggers, validations, or other functions
+- Improve maintainability
+- Centralize business logic
+
+<Callout type="info">
+All server-side logic runs on Oracle's servers, ensuring data security and consistency across all access points.
+</Callout>
 
 ---
 
 ## Web Services for Custom Objects
 
-Custom objects can be exposed using **Web Services**.
+Custom objects can be exposed through web services to enable integration with external systems.
 
 ### SOAP Web Services
-- XML-based
-- Used in enterprise integrations
+
+XML-based web services for enterprise integrations.
+
+| Feature | Description |
+|---------|-------------|
+| **Protocol** | SOAP over HTTP/HTTPS |
+| **Data Format** | XML |
+| **Operations** | Create, Read, Update, Delete, Query |
+| **Use Case** | Enterprise systems, legacy integrations |
 
 ### REST Web Services
-- HTTP-based (GET, POST, PUT, DELETE)
-- Require request and response payloads
 
-These services allow external systems to interact with custom object data.
+Modern HTTP-based web services.
+
+| HTTP Method | Operation | Description |
+|-------------|-----------|-------------|
+| **GET** | Read | Retrieve custom object records |
+| **POST** | Create | Create new records |
+| **PATCH** | Update | Update existing records |
+| **DELETE** | Delete | Remove records |
+
+**REST Advantages**:
+- Lightweight and easy to consume
+- JSON format for requests and responses
+- Better suited for modern applications
+- Mobile and web-friendly
+
+<Callout type="info">
+[Web Services Configuration Guide →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/web-services.html)
+</Callout>
 
 ---
 
-## Important Limitations and Behavior
+## Important Limitations and Behaviors
 
-- Custom objects **cannot be permanently deleted**
-- Records are usually **soft-deleted** by Oracle
-- In CRM objects, Oracle often uses **Party ID** instead of simple record IDs
-- Direct database access is not allowed
-- All changes must remain upgrade-safe
+Understanding these constraints is essential for effective custom object design.
+
+### Key Limitations
+
+| Limitation | Description | Impact |
+|------------|-------------|--------|
+| **No Permanent Deletion** | Custom objects cannot be completely removed | Plan object design carefully |
+| **Soft Delete** | Records are marked as deleted, not removed | Database storage considerations |
+| **Party ID Usage** | CRM objects use Party ID instead of simple IDs | Integration complexity |
+| **No Direct Database Access** | All changes through Application Composer | Use APIs for external access |
+| **Upgrade Safety** | Customizations must follow Oracle guidelines | Test after each update |
+
+### Best Practices
+
+- Plan custom object structure before creation
+- Use clear naming conventions
+- Document business logic and validations
+- Test thoroughly before deployment
+- Consider performance implications for large data volumes
+- Review security settings regularly
+
+<Callout type="warning">
+**Important**: Custom objects cannot be permanently deleted. Once created, they remain in the system even if hidden or unused. Plan your object design carefully.
+</Callout>
 
 ---
 
 ## Why Custom Objects Are Important
 
-Custom objects help organizations:
+Custom objects enable organizations to:
 
-- Extend CRM functionality safely
-- Store business-specific data
-- Implement custom workflows
-- Maintain Oracle upgrade compatibility
+| Benefit | Business Value |
+|---------|----------------|
+| **Extend CRM Functionality** | Add capabilities beyond standard features |
+| **Store Business-Specific Data** | Capture unique organizational information |
+| **Implement Custom Workflows** | Automate organization-specific processes |
+| **Maintain Upgrade Compatibility** | Ensure customizations survive Oracle updates |
+| **Enable Integration** | Connect with external systems seamlessly |
+| **Improve User Adoption** | Tailor the system to match business processes |
 
 ---
 
@@ -154,10 +294,16 @@ Custom objects help organizations:
 
 The Custom Objects module in Application Composer allows users to:
 
-- Create custom business entities
+- Create custom business entities tailored to specific needs
 - Configure fields, pages, and relationships
-- Apply validation rules and triggers
-- Secure data using roles
-- Integrate with external systems
+- Apply validation rules and triggers for business logic
+- Secure data using role-based access controls
+- Integrate with external systems via web services
 
-Custom objects provide flexibility while maintaining Oracle Fusion best practices.
+Custom objects provide the flexibility to extend Oracle Fusion while maintaining platform best practices and upgrade safety.
+
+<Callout type="info">
+**Next Steps**: Learn about advanced topics such as complex validations, trigger optimization, and integration patterns.
+
+[Custom Objects Documentation →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/custom-objects.html)
+</Callout>

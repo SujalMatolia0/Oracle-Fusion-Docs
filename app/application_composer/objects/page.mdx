@@ -3,7 +3,9 @@ title: Objects Overview
 description: Overview of Objects in Oracle Fusion Application Composer
 ---
 
-<br></br>
+import { Callout } from 'nextra/components'
+
+# Objects Overview
 
 The **Objects** module in Application Composer is used to **define and manage business data** in Oracle Fusion Sales and Service Cloud.
 
@@ -28,139 +30,256 @@ Every object can include data, UI configuration, security, and business logic.
 Application Composer supports two types of objects.
 
 ### Standard Objects
-- Delivered by Oracle
-- Used for core business processes
-- Can be configured but not fully changed or deleted
-- Examples: Account, Contact, Opportunity, Service Request
+
+Pre-built objects delivered by Oracle for core business processes.
+
+| Characteristic | Details |
+|----------------|---------|
+| **Source** | Delivered by Oracle |
+| **Use Case** | Core business processes |
+| **Customization** | Can be configured but not deleted |
+| **Examples** | Account, Contact, Opportunity, Service Request |
 
 ### Custom Objects
-- Created by customers
-- Used when standard objects are not sufficient
-- Fully configurable within Oracle limits
-- Support fields, pages, relationships, security, and scripts
+
+User-created objects for specific business requirements.
+
+| Characteristic | Details |
+|----------------|---------|
+| **Source** | Created by customers |
+| **Use Case** | When standard objects are insufficient |
+| **Customization** | Fully configurable within Oracle limits |
+| **Features** | Support fields, pages, relationships, security, and scripts |
+
+<Callout>
+**Note**: Custom objects follow the same structure as standard objects but are tailored to your specific business needs.
+</Callout>
 
 ---
 
 ## Object Components
 
-Each object can contain the following components.
+Each object consists of multiple components that define its structure and behavior.
 
 ### Fields
-- Store individual data values
+
+Store individual data values within an object.
+
 - Similar to table columns
 - Can be standard or custom
+- Support various data types (text, number, date, picklist, etc.)
 
 ### Records
-- Individual rows of data
-- Represent actual business entries
+
+Individual rows of data representing actual business entries.
+
+- Each record is a unique instance
+- Contains field values
+- Managed through UI or APIs
 
 ### Pages
-- Control how data is shown to users
-- Define create, view, and edit layouts
+
+Control how data is displayed to users.
+
+| Page Type | Purpose |
+|-----------|---------|
+| **Create Page** | Form for creating new records |
+| **View Page** | Display record details |
+| **Edit Page** | Modify existing records |
+| **List Page** | Show multiple records in a table |
 
 ### Links and Actions
-- **Links** allow navigation between pages
-- **Actions** perform operations such as save, update, or execute logic
+
+Navigation and operations within the application.
+
+- **Links**: Allow navigation between pages and related records
+- **Actions**: Perform operations such as save, update, delete, or execute custom logic
 
 ### Security
-- Controls access to objects and fields
-- Based on roles and privileges
+
+Controls access to objects and their data.
+
+| Security Level | Description |
+|----------------|-------------|
+| **Object Level** | Controls who can access the object |
+| **Field Level** | Controls read/write permissions on specific fields |
+| **Record Level** | Controls which records users can see |
+
+All security is based on roles and privileges.
 
 ---
 
-## Object Creation Concepts
+## Object Relationships
 
 ### Child Objects
-- Objects can have **child objects**
-- Used to store related data
-- Example: Order → Order Items
+
+Objects can have **child objects** to store related data.
+
+- Used for one-to-many relationships
+- Example: Order (parent) → Order Items (child)
 - One parent can have many child records
 
----
+```
+Order
+├── Order Item 1
+├── Order Item 2
+└── Order Item 3
+```
 
-### Relationships Between Objects
+### Relationship Types
 
-Relationships define how objects are connected.
+Define how objects are connected to each other.
 
-Supported relationship types include:
-- **One-to-One**
-- **One-to-Many**
-- **Many-to-Many**
+| Relationship Type | Description | Example |
+|-------------------|-------------|---------|
+| **One-to-One** | Single record relates to single record | User → User Profile |
+| **One-to-Many** | Single record relates to multiple records | Account → Contacts |
+| **Many-to-Many** | Multiple records relate to multiple records | Projects → Resources |
 
-Relationships are used for:
-- Data linking
-- Navigation
-- Reporting
+**Relationships are used for**:
+- Data linking between objects
+- Navigation across related records
+- Reporting and analytics
 - Maintaining data consistency
 
----
+<Callout type="info">
+[Learn more about Relationships →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/relationships.html)
+</Callout>
 
 ### Rollup Fields
 
-A **Rollup Field** is a calculated field on a **parent object**.
+A **Rollup Field** is a calculated field on a parent object that summarizes data from child objects.
 
-- It summarizes data from child objects
-- Example: Total Amount from Order Items
-- Automatically updates based on child records
+| Aspect | Details |
+|--------|---------|
+| **Purpose** | Aggregate data from child records |
+| **Location** | Defined on parent object |
+| **Update** | Automatically recalculated when child data changes |
+| **Common Uses** | Totals, counts, averages, min/max values |
 
-Rollup fields are commonly used for totals, counts, and summaries.
+**Example**:
+```
+Order (Parent)
+  - Total Amount (Rollup Field)
+  
+Order Items (Children)
+  - Item 1: $100
+  - Item 2: $200
+  - Item 3: $150
+  
+Total Amount = $450 (automatically calculated)
+```
 
 ---
 
 ## Business Logic on Objects
 
-Objects can include **server-side business logic**.
+Objects can include **server-side business logic** to enforce rules and automate processes.
 
 ### Validation Rules
-- Validate data before saving
-- Can be applied at field or object level
-- Prevent incorrect or incomplete data
 
----
+Ensure data quality before records are saved.
+
+- Applied at field or object level
+- Prevent incorrect or incomplete data
+- Display error messages to users
+- Execute before save operations
+
+**Example Use Cases**:
+- Ensure email format is valid
+- Check that required fields are filled
+- Verify that discount percentage is within limits
 
 ### Triggers
-- Execute logic during create, update, or delete events
-- Used for automation and conditional behavior
-- Can run when field values change
 
----
+Execute logic automatically during record lifecycle events.
+
+| Trigger Type | When It Runs | Use Case |
+|--------------|--------------|----------|
+| **Before Create** | Before a new record is saved | Set default values |
+| **After Create** | After a new record is created | Send notifications |
+| **Before Update** | Before changes are saved | Validate changes |
+| **After Update** | After changes are saved | Update related records |
+| **Before Delete** | Before record is deleted | Check dependencies |
+| **After Delete** | After record is deleted | Clean up related data |
 
 ### Object Functions
-- Custom Groovy methods defined on objects
-- Used when logic needs to be reused
-- Executed based on conditions
 
-All object logic runs on the **server**.
+Custom Groovy methods defined on objects for reusable logic.
+
+```groovy
+// Example: Object function to calculate tax
+def calculateTax(amount) {
+    def taxRate = 0.08
+    return amount * taxRate
+}
+```
+
+**Characteristics**:
+- Reusable across multiple triggers and validations
+- Execute based on conditions
+- Improve code maintainability
+
+<Callout type="warning">
+All object logic runs on the **server**, not in the browser. This ensures data security and consistency.
+</Callout>
 
 ---
 
 ## Web Services on Objects
 
-Objects can be exposed through **Web Services** for integration.
+Objects can be exposed through **Web Services** to enable integration with external systems.
 
 ### SOAP Web Services
-- XML-based
-- Used in enterprise integrations
+
+XML-based web services for enterprise integrations.
+
+| Feature | Description |
+|---------|-------------|
+| **Protocol** | SOAP (Simple Object Access Protocol) |
+| **Format** | XML |
+| **Use Case** | Legacy enterprise integrations |
+| **Operations** | Create, Read, Update, Delete (CRUD) |
 
 ### REST Web Services
-- HTTP-based
-- Uses methods such as GET, POST, PUT, and DELETE
-- Requires request and response payloads
 
-Web services allow Oracle Fusion to exchange data with external systems.
+HTTP-based web services using standard HTTP methods.
+
+| HTTP Method | Operation | Description |
+|-------------|-----------|-------------|
+| **GET** | Read | Retrieve records |
+| **POST** | Create | Create new records |
+| **PUT** | Update | Update existing records |
+| **PATCH** | Partial Update | Update specific fields |
+| **DELETE** | Delete | Remove records |
+
+**Characteristics**:
+- Lightweight and modern
+- Uses JSON for request/response
+- Easier to consume than SOAP
+- Better for web and mobile applications
+
+<Callout type="info">
+[Web Services Documentation →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/web-services.html)
+</Callout>
 
 ---
 
 ## Why Objects Are Important
 
-Objects are important because they:
-- Store business data
-- Drive UI behavior
-- Control automation and validations
-- Enforce security
-- Enable integrations
+Objects are the foundation of Oracle Fusion applications because they:
 
-Almost every feature in Sales and Service Cloud depends on objects.
+| Capability | Impact |
+|------------|--------|
+| **Store business data** | Central repository for all information |
+| **Drive UI behavior** | Determine what users see and can do |
+| **Control automation** | Enable validations and workflows |
+| **Enforce security** | Protect sensitive data |
+| **Enable integrations** | Connect with external systems |
+
+<Callout>
+Almost every feature in Sales and Service Cloud depends on objects. Understanding objects is essential for effective customization.
+</Callout>
 
 ---
 
@@ -174,4 +293,12 @@ The Objects module in Application Composer is used to:
 - Apply validations, triggers, and functions
 - Enable integrations using web services
 
-Understanding objects is essential before learning advanced topics such as workflows, security, and integrations.
+**Next Steps**: Understanding objects is essential before learning advanced topics such as:
+- Object Workflows
+- Security Configuration
+- Integration Patterns
+- Advanced Groovy Scripting
+
+<Callout type="info">
+[Objects Configuration Guide →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/objects.html)
+</Callout>

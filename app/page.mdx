@@ -3,7 +3,9 @@ title: Overview
 description: Overview of Oracle Fusion Sales & Service Cloud
 ---
 
-<br></br>
+import { Callout } from 'nextra/components'
+
+# Oracle Fusion Sales & Service Cloud
 
 Oracle Fusion Sales and Service Cloud is part of **Oracle Fusion Cloud Applications**.  
 It helps organizations manage **customers, sales activities, and customer support** using a cloud-based system.
@@ -27,13 +29,9 @@ Oracle Fusion Cloud is used to:
 - Handle customer issues
 - Automate business processes
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/index.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Explore Oracle Fusion Cloud Features →
-</a>
+<Callout type="info">
+**Learn More**: [Explore Oracle Fusion Cloud Features →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/index.html)
+</Callout>
 
 ---
 
@@ -48,13 +46,9 @@ It is divided into two main areas:
 
 Each area supports a different stage of the customer lifecycle.
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/sales/25d/index.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Explore Sales & Service Cloud →
-</a>
+<Callout type="info">
+**Documentation**: [Oracle Fusion Applications Readiness →](https://docs.oracle.com/en/cloud/saas/readiness/)
+</Callout>
 
 ---
 
@@ -74,20 +68,16 @@ It is mainly used by **sales users**.
 ### Common Sales Cloud Objects
 
 | Object | Purpose |
-|------|--------|
-| Leads | Potential customers |
-| Accounts | Companies |
-| Contacts | People |
-| Opportunities | Possible sales deals |
-| Activities | Calls, meetings, tasks |
+|--------|---------|
+| **Leads** | Potential customers |
+| **Accounts** | Companies |
+| **Contacts** | People |
+| **Opportunities** | Possible sales deals |
+| **Activities** | Calls, meetings, tasks |
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/sales/25d/oacex/manage-sales-objects.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Configure Sales Objects →
-</a>
+<Callout type="info">
+**Configuration**: [Manage Sales Objects in Application Composer →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/manage-sales-objects.html)
+</Callout>
 
 ---
 
@@ -107,20 +97,16 @@ It is mainly used by **support agents**.
 ### Common Service Cloud Features
 
 | Feature | Purpose |
-|------|--------|
-| Service Requests | Customer issues or tickets |
-| Case Management | End-to-end issue handling |
-| Knowledge Base | Help articles |
-| SLA Tracking | Response and resolution tracking |
-| Service Reports | Support performance analysis |
+|---------|---------|
+| **Service Requests** | Customer issues or tickets |
+| **Case Management** | End-to-end issue handling |
+| **Knowledge Base** | Help articles |
+| **SLA Tracking** | Response and resolution tracking |
+| **Service Reports** | Support performance analysis |
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/service/25d/index.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Explore Service Cloud Features →
-</a>
+<Callout type="info">
+**Documentation**: [Oracle Service Cloud Overview →](https://docs.oracle.com/en/cloud/saas/service/)
+</Callout>
 
 ---
 
@@ -134,22 +120,25 @@ You can think of it as:
 
 Objects store data such as customers, orders, or service requests.
 
-### Object parts
+### Object Components
 
 Each object can include:
-- Fields (data values)
-- Records (rows of data)
-- Pages (UI screens)
-- Business rules
-- Security settings
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/objects.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Configure Objects in Application Composer →
-</a>
+| Component | Description |
+|-----------|-------------|
+| **Fields** | Data values |
+| **Records** | Rows of data |
+| **Pages** | UI screens |
+| **Business Rules** | Validation and automation logic |
+| **Security Settings** | Access control |
+
+<Callout type="warning">
+**Important**: Object customization requires proper understanding of data relationships and business processes.
+</Callout>
+
+<Callout type="info">
+**Configuration**: [Configure Objects in Application Composer →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/objects.html)
+</Callout>
 
 ---
 
@@ -161,28 +150,26 @@ Groovy is used to add **business logic**, not to build full applications.
 
 ### What can Groovy do?
 
-- Validate data
-- Auto-update fields
-- Control behavior during save or update
-- Perform calculations
+- ✅ Validate data
+- ✅ Auto-update fields
+- ✅ Control behavior during save or update
+- ✅ Perform calculations
 
-Groovy always runs **inside Oracle Fusion**.
+<Callout type="warning">
+Groovy always runs **inside Oracle Fusion** and has limited scope. It cannot be used for external integrations.
+</Callout>
 
-### Where Groovy is used
+### Where Groovy is Used
 
-| Area | Purpose |
-|----|----|
-| Field level | Validation |
-| Object level | Triggers |
-| Global level | Reusable functions |
+| Area | Purpose | Use Case |
+|------|---------|----------|
+| **Field level** | Validation | Check if email format is correct |
+| **Object level** | Triggers | Auto-populate fields on record creation |
+| **Global level** | Reusable functions | Shared calculation logic |
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/groovy-scripting.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Implement Groovy Logic →
-</a>
+<Callout type="info">
+**Learn More**: [Implement Groovy Logic →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/groovy-scripting.html)
+</Callout>
 
 ---
 
@@ -191,22 +178,18 @@ Groovy always runs **inside Oracle Fusion**.
 Oracle Fusion supports two approaches:
 
 ### Configuration
-- Done using UI tools
-- No code required
-- Used for layouts, security, fields
+- ✅ Done using UI tools
+- ✅ No code required
+- ✅ Used for layouts, security, fields
 
 ### Customization
-- Uses Groovy scripts
-- Used for rules and automation
-- Controlled and limited by Oracle
+- 🔧 Uses Groovy scripts
+- 🔧 Used for rules and automation
+- ⚠️ Controlled and limited by Oracle
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/application-composer-overview.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Open Application Composer →
-</a>
+<Callout type="info">
+**Tool**: [Open Application Composer →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/application-composer-overview.html)
+</Callout>
 
 ---
 
@@ -215,33 +198,34 @@ Oracle Fusion supports two approaches:
 Oracle Fusion provides **built-in APIs** to connect with other systems.
 
 These APIs allow:
-- Reading data
-- Updating data
-- Integrating with external applications
 
-<a
-  href="https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/rest-apis.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🔧 Explore REST & SOAP APIs →
-</a>
+| Capability | API Type | Use Case |
+|------------|----------|----------|
+| **Reading data** | REST/SOAP | Fetch customer records |
+| **Updating data** | REST/SOAP | Update order status |
+| **Integrating** | REST/SOAP | Connect with external CRM |
+
+<Callout type="info">
+**API Documentation**: [Explore REST & SOAP APIs →](https://docs.oracle.com/en/cloud/saas/applications-common/25d/oacex/rest-apis.html)
+</Callout>
 
 ---
 
 ## Summary
 
-Oracle Fusion Sales & Service Cloud:
+**Oracle Fusion Sales & Service Cloud:**
 
-- Is a CRM platform
-- Uses objects to store data
-- Supports sales and service teams
-- Allows safe customization
-- Uses Groovy for business logic
+- Is a CRM platform  
+- Uses objects to store data  
+- Supports sales and service teams  
+- Allows safe customization  
+- Uses Groovy for business logic  
 - Is fully managed by Oracle
+### Next Steps
 
-This overview is the starting point for learning deeper topics like:
+This overview is the starting point for learning deeper topics:
+
 - Application Composer
 - Object Workflows
-- Security
-- Integrations
+- Security Configuration
+- Integration Patterns
