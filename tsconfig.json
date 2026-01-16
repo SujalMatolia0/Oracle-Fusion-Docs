@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/page.mdx", "app/_meta.jsx"  ],
+, "app/page.mdx", "app/_meta.jsx", "app/application_composer/common_setup/page.mdx"  ],
   "exclude": ["node_modules"]
 }

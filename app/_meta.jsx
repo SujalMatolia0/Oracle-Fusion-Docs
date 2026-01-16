@@ -1,6 +1,7 @@
 export default {
-  index:{
-    title: 'Oracle Fusion Sales/Service Cloud'
+  index: {
+    title: 'Oracle Fusion Sales / Service Cloud',
   },
-  application_composer: 'Application Composer',
+
+  application_composer: 'Application Composer'
 };

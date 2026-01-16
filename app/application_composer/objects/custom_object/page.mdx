@@ -1,0 +1,163 @@
+---
+title: Custom Objects Overview
+description: Overview of Custom Objects in Oracle Fusion Application Composer
+---
+
+<br></br>
+
+The **Custom Objects** module in Application Composer allows users to **create and manage custom business entities** when standard Oracle objects do not meet business requirements.
+
+Custom objects are fully configurable and are commonly used to store **organization-specific data**.
+
+---
+
+## What is a Custom Object?
+
+A **Custom Object** is a user-defined business entity created using Application Composer.
+
+You can think of a custom object as:
+- A custom database table
+- A business entity with UI, security, and logic
+
+Custom objects are created and managed **entirely through the UI**, without direct database access.
+
+---
+
+## When to Use Custom Objects
+
+Custom objects are used when:
+
+- Required data does not fit into standard objects
+- Business processes are unique
+- Additional tracking or reporting is needed
+- Extensions must remain upgrade-safe
+
+---
+
+## Core Components of a Custom Object
+
+Each custom object can include the following components.
+
+---
+
+### Fields
+
+- Fields are attributes of a custom object
+- Similar to columns in a database table
+- Can be standard or custom
+- Used to store business data
+
+---
+
+### Pages
+
+- Pages control how users interact with object data
+- Define create, edit, and view layouts
+- UI behavior is managed through Application Composer and Page Composer
+
+---
+
+### Links and Actions
+
+- **Links** are used for navigation between pages or objects
+- **Actions** perform operations on records
+- Actions can trigger business logic
+
+---
+
+### Security
+
+- Security controls access to custom object data
+- Based on roles and privileges
+- Determines who can view, create, update, or delete records
+
+---
+
+## Relationships in Custom Objects
+
+Custom objects can be connected to other objects using relationships.
+
+- Parent–child relationships are supported
+- Used to link related business data
+- Important for navigation, reporting, and data integrity
+
+---
+
+## Server-Side Business Logic
+
+Custom objects support server-side logic using Groovy scripts.
+
+---
+
+### Validation Rules
+
+- Applied at field or object level
+- Validate data before saving
+- Prevent incorrect or incomplete data entry
+
+---
+
+### Triggers
+
+- Executed during create, update, or delete events
+- Used for automation and conditional logic
+- Can react to field value changes
+
+---
+
+### Object Functions
+
+- Custom Groovy methods defined on objects
+- Used for reusable business logic
+- Can be called from triggers or actions
+
+---
+
+## Web Services for Custom Objects
+
+Custom objects can be exposed using **Web Services**.
+
+### SOAP Web Services
+- XML-based
+- Used in enterprise integrations
+
+### REST Web Services
+- HTTP-based (GET, POST, PUT, DELETE)
+- Require request and response payloads
+
+These services allow external systems to interact with custom object data.
+
+---
+
+## Important Limitations and Behavior
+
+- Custom objects **cannot be permanently deleted**
+- Records are usually **soft-deleted** by Oracle
+- In CRM objects, Oracle often uses **Party ID** instead of simple record IDs
+- Direct database access is not allowed
+- All changes must remain upgrade-safe
+
+---
+
+## Why Custom Objects Are Important
+
+Custom objects help organizations:
+
+- Extend CRM functionality safely
+- Store business-specific data
+- Implement custom workflows
+- Maintain Oracle upgrade compatibility
+
+---
+
+## Summary
+
+The Custom Objects module in Application Composer allows users to:
+
+- Create custom business entities
+- Configure fields, pages, and relationships
+- Apply validation rules and triggers
+- Secure data using roles
+- Integrate with external systems
+
+Custom objects provide flexibility while maintaining Oracle Fusion best practices.

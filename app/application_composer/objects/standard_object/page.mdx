@@ -1,0 +1,165 @@
+---
+title: Standard Objects Overview
+description: Overview of Standard Objects in Oracle Fusion Application Composer
+---
+
+<br></br>
+
+The **Standard Objects** module in Application Composer provides **predefined business objects** delivered by Oracle as part of Oracle Fusion Sales and Service Cloud.
+
+These objects represent **core CRM entities** and are used by most organizations without the need to create custom structures.
+
+---
+
+## What are Standard Objects?
+
+**Standard Objects** are business entities that are:
+
+- Delivered and maintained by Oracle
+- Designed to support common CRM processes
+- Available immediately when the application is provisioned
+
+You can think of standard objects as **built-in tables** provided by Oracle.
+
+---
+
+## Examples of Standard Objects
+
+Common standard objects include:
+
+- Account
+- Contact
+- Opportunity
+- Lead
+- Service Request
+- Activity
+
+These objects are tightly integrated with Oracle Fusion functionality.
+
+---
+
+## How Standard Objects Are Used
+
+Standard objects are used to:
+
+- Manage core customer and sales data
+- Support out-of-the-box CRM workflows
+- Enable reporting and analytics
+- Integrate with other Oracle Fusion modules
+
+Most standard business processes depend on standard objects.
+
+---
+
+## What Can Be Configured on Standard Objects
+
+Although standard objects cannot be fully modified, they **can be configured**.
+
+You can configure:
+
+- Custom fields
+- Page layouts
+- Relationships (within limits)
+- Validation rules
+- Triggers and object logic
+- Security and access control
+
+All configurations are **upgrade-safe**.
+
+---
+
+## What Cannot Be Changed
+
+Standard objects have controlled limitations.
+
+You **cannot**:
+
+- Delete standard objects
+- Remove Oracle-delivered fields
+- Change core object structure
+- Modify underlying database schema
+
+Oracle controls the base definition of standard objects.
+
+---
+
+## Business Logic on Standard Objects
+
+Standard objects support server-side logic.
+
+### Validation Rules
+- Validate data before saving
+- Applied at field or object level
+
+### Triggers
+- Execute logic on create, update, or delete
+- Used for automation
+
+### Object Functions
+- Reusable Groovy logic
+- Executed based on business conditions
+
+---
+
+## Relationships in Standard Objects
+
+- Standard objects already have predefined relationships
+- Additional relationships can be created within allowed limits
+- Used for navigation, reporting, and data consistency
+
+---
+
+## Security on Standard Objects
+
+Security is managed using:
+
+- Roles
+- Privileges
+- Object-level and field-level access
+
+> **Note on Security Differences**
+>
+> Security behavior for **Standard Objects** is more restricted compared to **Custom Objects**.
+>
+> - Standard Objects use **Oracle-defined roles and privileges**
+> - Core security rules cannot be removed or overridden
+> - Field-level and object-level access is limited to supported configurations
+>
+> In contrast, **Custom Objects** provide greater flexibility in defining security, roles, and access control.
+>
+> This ensures that Oracle-delivered business processes remain stable and upgrade-safe.
+
+
+---
+
+## Important Characteristics of Standard Objects
+
+- Maintained by Oracle
+- Automatically upgraded
+- Integrated with other Fusion modules
+- Use Oracle-defined identifiers (such as Party ID in CRM)
+
+---
+
+## When to Use Standard Objects
+
+Standard objects should be used when:
+
+- Business requirements match Oracle-delivered functionality
+- Standard CRM processes are sufficient
+- Long-term upgrade compatibility is critical
+
+Custom objects should be used **only when required**.
+
+---
+
+## Summary
+
+The Standard Objects module in Application Composer allows users to:
+
+- Use Oracle-delivered business entities
+- Configure behavior without changing core structure
+- Apply business logic and security
+- Maintain upgrade safety and system integrity
+
+Standard objects form the backbone of Oracle Fusion Sales and Service Cloud.

@@ -1,11 +1,13 @@
-import { useMDXComponents as getThemeComponents } from 'nextra-theme-docs' // nextra-theme-blog or your custom theme
- 
+import { useMDXComponents as getThemeComponents } from 'nextra-theme-docs'
+
 const themeComponents = getThemeComponents()
- 
-// Merge components
-export function useMDXComponents(components) {
+
+export function useMDXComponents(
+  components: Record<string, React.ComponentType<unknown>>
+) {
   return {
     ...themeComponents,
-    ...components
+    ...components,
   }
 }
+
