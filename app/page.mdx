@@ -1,0 +1,264 @@
+---
+title: Overview
+description: Overview of Oracle Fusion Sales & Service Cloud
+---
+
+# Overview
+
+Oracle Fusion Sales and Service Cloud is part of **Oracle Fusion Cloud Applications**, a suite of enterprise-grade cloud business software used by organizations to manage customer relationships, sales processes, and customer support operations.
+
+This documentation provides a **conceptual overview** of the platform, its components, and customization capabilities.
+
+---
+
+## What is Oracle Fusion Cloud (OFC)?
+
+**Oracle Fusion Cloud (OFC)** is an **online (cloud-based) enterprise platform** that helps organizations manage their core business processes.
+
+### Key Purpose
+
+Oracle Fusion Cloud is used to:
+
+* Interact with customers
+* Sell products and services
+* Solve customer problems
+* Automate and track business workflows
+
+It is accessible through a **web browser** and does not require local installation.
+
+---
+
+## Oracle Fusion Sales & Service Cloud
+
+Oracle Fusion Sales & Service Cloud focuses on **Customer Relationship Management (CRM)** and is divided into two major modules:
+
+1. **Sales Cloud**
+2. **Service Cloud**
+
+Each module is designed to support a specific phase of the customer lifecycle.
+
+---
+
+## Sales Cloud
+
+### What is Sales Cloud?
+
+**Sales Cloud** helps organizations:
+
+* Manage leads and prospects
+* Track customer accounts
+* Monitor sales pipelines
+* Close deals efficiently
+
+It is primarily used by **sales teams**.
+
+### Core Objectives
+
+* Increase sales productivity
+* Improve pipeline visibility
+* Track customer interactions
+* Forecast revenue
+
+---
+
+### Key Objects in Sales Cloud
+
+In Oracle Fusion, data is stored in **Objects** (similar to database tables).
+
+| Object            | Description                                     |
+| ----------------- | ----------------------------------------------- |
+| **Leads**         | Potential customers or sales prospects          |
+| **Accounts**      | Companies or organizations you do business with |
+| **Contacts**      | People associated with an account               |
+| **Opportunities** | Potential sales deals                           |
+| **Activities**    | Tasks, calls, meetings, and follow-ups          |
+
+---
+
+### Object Architecture (Conceptual)
+
+Each object consists of:
+
+* **Tables** → Store data
+* **UI (Pages)** → Display and edit data
+* **Business Logic** → Controls validations, rules, and automation
+
+---
+
+## Service Cloud
+
+### What is Service Cloud?
+
+**Service Cloud** helps organizations:
+
+* Handle customer issues
+* Track service requests
+* Provide post-sales support
+
+It is primarily used by **support and service teams**.
+
+### Core Objectives
+
+* Improve customer satisfaction
+* Resolve issues efficiently
+* Enforce service-level agreements (SLAs)
+* Maintain service history
+
+---
+
+### Key Objects & Features in Service Cloud
+
+| Feature / Object               | Description                                |
+| ------------------------------ | ------------------------------------------ |
+| **Service Requests (Tickets)** | Customer issues or complaints              |
+| **Case Management**            | End-to-end handling of customer cases      |
+| **Knowledge Base**             | Articles and solutions for common problems |
+| **SLA Tracking**               | Tracks response and resolution times       |
+| **Service Reports**            | Analytics and performance reports          |
+
+---
+
+## Objects in Oracle Fusion
+
+### What is an Object?
+
+An **Object** in Oracle Fusion is similar to:
+
+* A **Table** in a database
+* A **Business Entity** in an application
+
+Objects store structured business data and are the backbone of Sales and Service Cloud.
+
+### Object Components
+
+* Fields (Columns)
+* Records (Rows)
+* UI Pages
+* Business Rules
+* Security Rules
+
+---
+
+## Customization Using Groovy Script
+
+### What is Groovy Script?
+
+**Groovy Script** is used in Oracle Fusion to write **small pieces of business logic** for customization.
+
+It allows you to:
+
+* Validate data
+* Automate actions
+* Control object behavior
+
+Groovy scripts run **inside Oracle Fusion Cloud**.
+
+---
+
+### Where Groovy Script is Used
+
+| Level               | Purpose     |
+| ------------------- | ----------- |
+| **Field → Object**  | Validations |
+| **Field → Object**  | Triggers    |
+| **Object → Global** | Functions   |
+
+---
+
+### Examples of Usage
+
+* Prevent saving invalid data
+* Auto-populate fields
+* Restrict updates based on conditions
+* Perform calculations
+
+---
+
+## Configuration vs Customization
+
+Oracle Fusion supports **low-code configuration** and **script-based customization**.
+
+### Configuration (UI-based)
+
+* Page Composer
+* Security setup
+* Object configuration
+* Field visibility
+* Layout changes
+
+### Customization (Code-based)
+
+* Groovy scripts
+* Object rules
+* Validation logic
+* API integrations
+
+> Both are used together to tailor the application to business needs.
+
+---
+
+## Common Terminology Mapping
+
+| Traditional Term | Oracle Fusion Term    |
+| ---------------- | --------------------- |
+| Table            | Object                |
+| Column           | Field                 |
+| Row              | Record                |
+| Validation Logic | Groovy Script         |
+| Admin Panel      | Setup & Configuration |
+| Business Rules   | Object Rules          |
+| API              | Built-in Services     |
+
+---
+
+## APIs and Object Rules
+
+### APIs
+
+Oracle Fusion provides **built-in APIs** to:
+
+* Integrate with external systems
+* Read and write object data
+* Automate business flows
+
+### Object Rules
+
+**Object Rules** define:
+
+* When actions should trigger
+* What logic should execute
+* How data should behave
+
+These rules often use Groovy scripts.
+
+---
+
+## Who Uses Sales & Service Cloud?
+
+| Role            | Usage                            |
+| --------------- | -------------------------------- |
+| Sales Executive | Leads, opportunities, activities |
+| Support Agent   | Service requests, cases          |
+| Administrator   | Configuration and security       |
+| Developer       | Groovy scripts, integrations     |
+
+---
+
+## Summary
+
+Oracle Fusion Sales & Service Cloud:
+
+* Is a **CRM platform**
+* Uses **Objects** as core data units
+* Supports **Sales** and **Service** workflows
+* Allows **configuration and customization**
+* Uses **Groovy scripting** for business logic
+* Provides **enterprise-level security and scalability**
+
+This overview serves as the **foundation** for deeper topics such as:
+
+* Application Composer
+* Object Workflows
+* Security
+* Integrations
+* Advanced Groovy scripting
