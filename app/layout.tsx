@@ -22,7 +22,9 @@ export default async function RootLayout({
       <Head />
       <body>
         <Layout
+        docsRepositoryBase='https://github.com/SujalMatolia0/Oracle-Fusion-Docs'
           pageMap={await getPageMap()}
+          copyPageButton={false}
           navbar={
             <Navbar
               logo={
@@ -42,7 +44,7 @@ export default async function RootLayout({
           }}
           footer={
             <Footer>
-              © {new Date().getFullYear()} Oracle Fusion Documentation
+              © {new Date().getFullYear()} Oracle Fusion Documentation by IOTX (TkBoom)
             </Footer>
           }
         >
